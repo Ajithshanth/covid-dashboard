@@ -3,7 +3,7 @@ import LineChart from "./Global Components/Line Chart";
 
 function CasesInfo() {
   return (
-    <div className="bg-secondary rounded-lg p-6">
+    <div className="bg-gray-800 rounded-lg p-6">
       <div className="flex">
         <div className="flex-none w-3/5"> Total No. of Cases</div>
 

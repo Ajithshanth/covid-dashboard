@@ -3,7 +3,7 @@ import CalendarButton from "./Global Components/Calendar Button";
 function BasicInfo() {
   return (
     <div className="grid grid-cols-2 gap-4  ">
-      <div className="rounded-lg bg-secondary p-6">
+      <div className="rounded-lg bg-gray-800 p-6">
         <div className="grid grid-cols-2 gap-4">
           <div>
             <div >608,960,923 </div>
@@ -22,7 +22,7 @@ function BasicInfo() {
       </div>
 
       <div className="grid grid-rows-2 grid-flow-col gap-4">
-        <div className="rounded-lg  bg-secondary p-6">
+        <div className="rounded-lg  bg-gray-800 p-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div>608,960,923 </div>
@@ -35,7 +35,7 @@ function BasicInfo() {
             </div>
           </div>
         </div>
-        <div className="rounded-lg  bg-secondary p-6">
+        <div className="rounded-lg  bg-gray-800 p-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div>608,960,923 </div>

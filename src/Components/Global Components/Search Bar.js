@@ -7,7 +7,7 @@ function SearchBar() {
         <input
           type="search"
           id="default-search"
-          className=" block p-1 pl-5  w-full  text-sm text-white bg-primary rounded-2xl border border-gray-300   "
+          className=" block p-1 pl-5  w-full  text-sm text-white bg-gray-900 rounded-2xl border border-gray-300   "
           placeholder="Search by Country"
           required
         />

@@ -1,26 +1,32 @@
-import React from "react";
-import { Modal } from "react-bootstrap";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const CountryInfo = (props) => {
+function CountryInfo(props) {
+  
+
   return (
-    <Modal
-      dialogClassName="modal-width"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      show={props.show}
-      onHide={props.handleClose}
-    >
-      <Modal.Header closeButton>
-        <Modal.Title>Login or Sign In </Modal.Title>
-      </Modal.Header>
+    <>
+      
+      <Modal show={props.handleShow} onHide={props.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!
 
-      <Modal.Body>
-        <p>Do you have an account?</p>
-      </Modal.Body>
-
-      <Modal.Footer>Footer</Modal.Footer>
-    </Modal>
+          {props.item.country}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={props.handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={props.handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
-};
-
-export default CountryInfo;
+}
+export default CountryInfo; 
