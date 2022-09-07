@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FiCalendar } from "react-icons/fi";
 import CalendarButton from "./Calendar Button";
+import PieChart from "./Pie Chart";
 
 function CountryInfo(props) {
   return (
@@ -21,7 +22,7 @@ function CountryInfo(props) {
             {props.item.country}
           </div>
           <div className="pb-4">
-            <div className="text-white text-md">608,960,923 </div>
+            <div className="text-white text-md">{props.item.cases} </div>
             <div className="text-lightskyblue text-xs">
               Total Coronovirus Cases
             </div>
@@ -29,22 +30,25 @@ function CountryInfo(props) {
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <div className="text-white text-md">608,960,923 </div>
+              <div className="text-white text-md">{props.item.active} </div>
 
               <div className="text-lightskyblue text-xs">Active Cases</div>
             </div>
 
             <div>
-              <div className="text-white text-md">608,960,923 </div>
+              <div className="text-white text-md">{props.item.recovered} </div>
               <div className="text-lightskyblue text-xs"> Closed Cases</div>
             </div>
           </div>
-         
 
           <div className="rounded-lg bg-gray-900 p-6 mb-4">
             <div className="flex">
               <div className="flex-none w-3/4">
-                <div className="text-lightskyblue text-xs">Pie Chart</div>
+                <PieChart
+                  active={props.item.active}
+                  closed={props.item.recovered}
+                />
+                {/* <div className="text-lightskyblue text-xs">Pie Chart</div> */}
               </div>
               <div>
                 <CalendarButton value="March 2020" />
@@ -59,13 +63,10 @@ function CountryInfo(props) {
               </div>
             </div>
           </div>
-          <div className="text-white text-xs mb-2">
-            Deaths
-          </div>
+          <div className="text-white text-xs mb-2">Deaths</div>
           <div className="rounded-lg bg-gray-900 p-6">
-          <div className="text-lightskyblue text-xs">Bar Chart</div>
+            <div className="text-lightskyblue text-xs">Bar Chart</div>
           </div>
-
         </Modal.Body>
 
         {/* <Modal.Footer>
