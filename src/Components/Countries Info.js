@@ -53,8 +53,8 @@ function CountriesInfo() {
   function viewInfo(item) {
     setShowModal(true);
     setCountry(item);
-    console.log("Worked", item);
-    console.log(showModal);
+   // console.log("Worked", item);
+  
   }
   const headers = [
     { text: "Country", value: "country" },
