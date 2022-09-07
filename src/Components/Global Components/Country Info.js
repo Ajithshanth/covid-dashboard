@@ -1,22 +1,27 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FiCalendar } from "react-icons/fi";
+import { VscChromeClose } from "react-icons/vsc";
+import { GoPrimitiveDot } from "react-icons/go";
+import getAllData from "./../../Assets/JSON/Death and Recovered.json";
+
 import CalendarButton from "./Calendar Button";
 import PieChart from "./Pie Chart";
+import BarChart from "./Bar Chart";
 
 function CountryInfo(props) {
+  const labelsDeath = Object.keys(getAllData.deaths);
+  const dataDeaths = Object.values(getAllData.deaths);
+
+  const labelsRecovered = Object.keys(getAllData.recovered);
+  const dataRecovered = Object.values(getAllData.recovered);
+
   return (
     <>
       <Modal size="md" show={props.handleShow} onHide={props.handleClose}>
-        {/* <Modal.Header closeButton>
-          <Modal.Title> {props.item.country}</Modal.Title>
-        </Modal.Header> */}
-
         <Modal.Body className="bg-gray-800">
           <div onClick={props.handleClose} className="float-right">
-            <FiCalendar color="white" />{" "}
+            <VscChromeClose color="white" />
           </div>
           <div className="text-mediumturquoise text-lg mb-4">
             {props.item.country}
@@ -48,16 +53,18 @@ function CountryInfo(props) {
                   active={props.item.active}
                   closed={props.item.recovered}
                 />
-                {/* <div className="text-lightskyblue text-xs">Pie Chart</div> */}
               </div>
               <div>
                 <CalendarButton value="March 2020" />
                 <div className="flex text-white text-xs mt-4 mb-2">
-                  <FiCalendar className="mt-1 mr-2" color="mediumturquoise" />
+                  <GoPrimitiveDot
+                    className="mt-1 mr-2"
+                    color="mediumturquoise"
+                  />
                   Close Cases
                 </div>
                 <div className="flex text-white text-xs">
-                  <FiCalendar className="mt-1 mr-2" color="royalblue" />
+                  <GoPrimitiveDot className="mt-1 mr-2" color="royalblue" />
                   Active Cases
                 </div>
               </div>
@@ -65,18 +72,21 @@ function CountryInfo(props) {
           </div>
           <div className="text-white text-xs mb-2">Deaths</div>
           <div className="rounded-lg bg-gray-900 p-6">
-            <div className="text-lightskyblue text-xs">Bar Chart</div>
+            <BarChart
+              labelName="No of Deaths"
+              labels={labelsDeath}
+              data={dataDeaths}
+            />
+          </div>
+          <div className="text-white text-xs mb-2">Recovered</div>
+          <div className="rounded-lg bg-gray-900 p-6">
+            <BarChart
+              labelName="No of Recovered"
+              labels={labelsRecovered}
+              data={dataRecovered}
+            />
           </div>
         </Modal.Body>
-
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={props.handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={props.handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

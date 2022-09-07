@@ -1,9 +1,9 @@
-import { Chart as ChartJS, ArcElement } from "chart.js";
+import { Chart as ChartJS, BarElement } from "chart.js";
 import { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
-ChartJS.register(ArcElement);
+import { Bar } from "react-chartjs-2";
+ChartJS.register(BarElement);
 
-function PieChart(props) {
+function BarChart(props) {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -11,13 +11,15 @@ function PieChart(props) {
 
   useEffect(() => {
     setChartData({
+      labels: props.labels,
       datasets: [
         {
-          data: [props.active, props.closed],
-          backgroundColor: ["#4166ff", "  #41cbe2"],
-          borderColor: "#111827",
-
-          borderWidth: 2,
+          label: props.labelName,
+          data: props.data,
+          backgroundColor: ["#41cbe2"],
+          borderColor: ["#41cbe2"],
+          borderWidth: 1,
+          borderRadius: 5,
         },
       ],
     });
@@ -57,9 +59,9 @@ function PieChart(props) {
 
   return (
     <div className="w-4/5">
-      <Doughnut options={chartOptions} data={chartData} />
+      <Bar options={chartOptions} data={chartData} />
     </div>
   );
 }
 
-export default PieChart;
+export default BarChart;

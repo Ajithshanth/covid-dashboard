@@ -1,8 +1,8 @@
 import {
   Chart as ChartJS,
   CategoryScale,
-  LinearScale,  
-  Tooltip, 
+  LinearScale,
+  Tooltip,
   PointElement,
   LineElement,
 } from "chart.js";
@@ -10,43 +10,19 @@ import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 ChartJS.register(
   CategoryScale,
-  LinearScale,  
-  Tooltip, 
+  LinearScale,
+  Tooltip,
   PointElement,
   LineElement
 );
 
-function LineChart() {
+function LineChart(props) {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
   const [chartOptions, setChartOptions] = useState({});
-  //   useEffect(() => {
-  //     const fetchPrices = async () => {
-  //       const res = await fetch("https://api.coincap.io/v2/assets/?limit=5");
-  //       const data = await res.json();
-  //       setChartData({
-  //         labels: data.data.map((crypto) => crypto.name),
-  //         datasets: [
-  //           {
-  //             label: "Price in USD",
-  //             data: data.data.map((crypto) => crypto.priceUsd),
-  //             borderColor: "royalblue",
-  //             backgroundColor: "rgba(53, 162, 235, 0.4)",
-  //             color:"royalblue",
-  //             legend: {
-  //                 display: false
-  //             },
-
-  //           },
-  //         ],
-  //       });
-  //     };
-  //     fetchPrices();
-  //   }, []);
-
   const tooltipTitle = function () {
-    return "This Month";
+    return "No of Cases";
   };
   const tooltipFooter = (tooltipItems) => {
     return tooltipItems[0].label;
@@ -54,19 +30,28 @@ function LineChart() {
 
   useEffect(() => {
     setChartData({
-      labels: ["March", "April", "May", "June", "July", "August", "Sept"],
+      labels: props.labels,
       datasets: [
         {
-          label: "Label",
-          data: [12, 55, 34, 120, 720, 150, 300],
+          data: props.data1,
           borderColor: "rgb(53, 162, 235)",
           backgroundColor: "white",
-
-          tension: 0.5,
           pointStyle: "circle",
           borderWidth: 2,
+          yAxisID: "y",
         },
       ],
+
+      // datasets: [
+      //   {
+      //     data: props.data2,
+      //     borderColor: "rgb(53, 162, 235)",
+      //     backgroundColor: "white",
+      //     pointStyle: "circle",
+      //     borderWidth: 2,
+      //     yAxisID: "y1",
+      //   },
+      // ],
     });
     setChartOptions({
       responsive: true,
@@ -119,8 +104,31 @@ function LineChart() {
           },
         },
       },
+
+      interaction: {
+        mode: "index",
+        intersect: false,
+      },
+      stacked: false,
+
+      scales: {
+        y: {
+          type: "linear",
+          display: true,
+          position: "left",
+        },
+        // y1: {
+        //   type: "linear",
+        //   display: true,
+        //   position: "right",
+
+        //   grid: {
+        //     drawOnChartArea: false,
+        //   },
+        // },
+      },
     });
-  }, []);
+  }, [props]);
 
   return (
     <div className="w-4/5">

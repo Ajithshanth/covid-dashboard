@@ -1,7 +1,14 @@
 import CalendarButton from "./Global Components/Calendar Button";
-import LineChart from "./Global Components/Line Chart"; 
+import LineChart from "./Global Components/Line Chart";
+import getAllData from "./../Assets/JSON/Death and Recovered.json"; 
 
 function CasesInfo() {
+  const labels = Object.keys(getAllData.cases);
+
+  const dataCases = Object.values(getAllData.cases);
+  // const dataDeaths = Object.values(getAllData.deaths);
+  // const dataRecovered = Object.values(getAllData.recovered);
+
   return (
     <div className="bg-gray-800 rounded-lg p-6">
       <div className="flex">
@@ -17,13 +24,13 @@ function CasesInfo() {
             Deaths
           </div>
           <div>
-            <CalendarButton value="March 2020"/>
+            <CalendarButton value="March 2020" />
           </div>
         </div>
       </div>
 
       <div>
-        <LineChart />
+        <LineChart labels={labels} data1={dataCases}   />
       </div>
     </div>
   );
