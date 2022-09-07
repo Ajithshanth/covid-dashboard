@@ -1,8 +1,7 @@
 import SearchBar from "./Global Components/Search Bar";
 import getAllCountries from "./../Assets/JSON/GETAll Countries.json";
-import { useEffect, useMemo, useState } from "react";
-import CountryInfo from "./Global Components/Country Info";
-import { Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import CountryInfo from "./Global Components/Country Info"; 
 import Pagination from "react-bootstrap/Pagination";
 
 function CountriesInfo() {

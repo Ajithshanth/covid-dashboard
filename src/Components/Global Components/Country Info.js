@@ -1,32 +1,83 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FiCalendar } from "react-icons/fi";
+import CalendarButton from "./Calendar Button";
 
 function CountryInfo(props) {
-  
-
   return (
     <>
-      
-      <Modal show={props.handleShow} onHide={props.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!
+      <Modal size="md" show={props.handleShow} onHide={props.handleClose}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title> {props.item.country}</Modal.Title>
+        </Modal.Header> */}
 
-          {props.item.country}
+        <Modal.Body className="bg-gray-800">
+          <div onClick={props.handleClose} className="float-right">
+            <FiCalendar color="white" />{" "}
+          </div>
+          <div className="text-mediumturquoise text-lg mb-4">
+            {props.item.country}
+          </div>
+          <div className="pb-4">
+            <div className="text-white text-md">608,960,923 </div>
+            <div className="text-lightskyblue text-xs">
+              Total Coronovirus Cases
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <div className="text-white text-md">608,960,923 </div>
+
+              <div className="text-lightskyblue text-xs">Active Cases</div>
+            </div>
+
+            <div>
+              <div className="text-white text-md">608,960,923 </div>
+              <div className="text-lightskyblue text-xs"> Closed Cases</div>
+            </div>
+          </div>
+         
+
+          <div className="rounded-lg bg-gray-900 p-6 mb-4">
+            <div className="flex">
+              <div className="flex-none w-3/4">
+                <div className="text-lightskyblue text-xs">Pie Chart</div>
+              </div>
+              <div>
+                <CalendarButton value="March 2020" />
+                <div className="flex text-white text-xs mt-4 mb-2">
+                  <FiCalendar className="mt-1 mr-2" color="mediumturquoise" />
+                  Close Cases
+                </div>
+                <div className="flex text-white text-xs">
+                  <FiCalendar className="mt-1 mr-2" color="royalblue" />
+                  Active Cases
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="text-white text-xs mb-2">
+            Deaths
+          </div>
+          <div className="rounded-lg bg-gray-900 p-6">
+          <div className="text-lightskyblue text-xs">Bar Chart</div>
+          </div>
+
         </Modal.Body>
-        <Modal.Footer>
+
+        {/* <Modal.Footer>
           <Button variant="secondary" onClick={props.handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={props.handleClose}>
             Save Changes
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );
 }
-export default CountryInfo; 
+export default CountryInfo;

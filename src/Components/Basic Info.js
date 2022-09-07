@@ -11,7 +11,7 @@ function BasicInfo() {
             <div className="text-lightskyblue text-xs">Total Coronovirus Cases</div>
           </div>
           <div>
-            <CalendarButton />
+            <CalendarButton value="All Time"/>
           </div>
           <div>
             <div> 17,198,154 </div>
@@ -31,7 +31,7 @@ function BasicInfo() {
             </div>
             <div>
               {" "}
-              <CalendarButton />
+              <CalendarButton value="All Time"/>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ function BasicInfo() {
             </div>
             <div>
               {" "}
-              <CalendarButton />
+              <CalendarButton value="All Time"/>
             </div>
           </div>
         </div>

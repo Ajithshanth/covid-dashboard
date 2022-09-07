@@ -17,7 +17,7 @@ function CasesInfo() {
             Deaths
           </div>
           <div>
-            <CalendarButton />
+            <CalendarButton value="March 2020"/>
           </div>
         </div>
       </div>

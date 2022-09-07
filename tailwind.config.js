@@ -15,6 +15,7 @@ module.exports = {
       },
       fontFamily: {},
       fontSize: {
+        xss: ".55rem",
         xs: ".75rem",
         sm: ".875rem",
         tiny: ".275rem",

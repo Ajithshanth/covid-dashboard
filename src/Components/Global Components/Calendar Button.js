@@ -1,13 +1,13 @@
 import { FiCalendar } from "react-icons/fi";
 
-function CalendarButton() {
+function CalendarButton(props) {
   return (
     <div>
       <button className="flex border-2 border-white/50 rounded-md px-2 py-1">
-        <span className="text-md"> All Time </span>
-        <span className="mt-1 ml-2">
+        <span className="text-xss text-white"> {props.value} </span>
+        <span className=" ml-2">
           {" "}
-          <FiCalendar color="mediumturquoise" />
+          <FiCalendar className="h-3" color="mediumturquoise" />
         </span>
       </button>
 
