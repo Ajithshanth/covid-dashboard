@@ -5,14 +5,14 @@ import CountryInfo from "./Global Components/Country Info";
 import Pagination from "react-bootstrap/Pagination";
 
 function CountriesInfo() {
-  const [showModal, setShowModal] = useState(false); 
-  const [country, setCountry] = useState({}); 
+  const [showModal, setShowModal] = useState(false);
+  const [country, setCountry] = useState({});
   const [active, setActive] = useState(1);
   const [data, setData] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-  const dataCount = 20;
+  const dataCount = 10;
 
-  useEffect(() => { 
+  useEffect(() => {
     let pageCount = Math.ceil(getAllCountries.length / dataCount);
     setPageCount(pageCount);
     changePage(1);
@@ -30,7 +30,9 @@ function CountriesInfo() {
       </Pagination.Item>
     );
   }
-  function changePage(pageNo) {
+
+
+  const changePage = (pageNo) => {
     setActive(pageNo);
     let itemEnd = dataCount * pageNo;
     let itemStart = itemEnd - dataCount;
@@ -38,22 +40,22 @@ function CountriesInfo() {
     setData(itemsLocal);
   }
 
-  function numberWithCommas(x) {
+  const numberWithCommas = (x) => {
     if (x > 0) {
       var result = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     return result || x;
-  }
-  function getPlus(x) {
+  };
+  const getPlus = (x) => {
     if (x > 0) {
       var result = " + ";
     }
     return result || "";
-  }
-  function viewInfo(item) {
+  };
+  const viewInfo = (item) => {
     setShowModal(true);
-    setCountry(item); 
-  }
+    setCountry(item);
+  };
   const headers = [
     { text: "Country", value: "country" },
     { text: "Total Cases", value: "cases" },
@@ -66,24 +68,20 @@ function CountriesInfo() {
     { text: "Critical", value: "critical" },
   ];
   const handleChange = (e) => {
-  
-     
-   
     var result = getAllCountries.filter((obj) => {
       return obj.country === e.value;
     });
 
-    console.log(result)
+    console.log(result);
     setData(result);
+    
   };
   const handleClear = () => {
-   
-    changePage(active)
-   // setData(getAllCountries);
+    changePage(active);
+    // setData(getAllCountries);
   };
   return (
-    <div className="bg-gray-800 rounded-lg p-6">
-    
+    <div className="bg-slate-800 rounded-lg p-6">
       <CountryInfo
         handleShow={showModal}
         handleClose={() => setShowModal(false)}
@@ -99,7 +97,7 @@ function CountriesInfo() {
       </div>
 
       <div>
-        <table className="table-fixed mt-8 w-full">
+        <table className="table-fixed mt-8 w-full border-separate border-spacing-y-4 ">
           <thead className="text-white/50">
             <tr className="text-left text-xs">
               {headers.map((header, i) => {

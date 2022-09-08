@@ -7,7 +7,7 @@ function Dashboard() {
     <div className="p-8 text-white">
       <div className="text-xl font-semibold" >Global Covid-19 update</div>
 
-      <div className="grid gap-2 py-4">
+      <div className="grid gap-6 py-4">
         <BasicInfo />
         <CasesInfo />
         <CountriesInfo /> 

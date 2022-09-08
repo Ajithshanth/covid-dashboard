@@ -10,7 +10,7 @@ function CasesInfo() {
   // const dataRecovered = Object.values(getAllData.recovered);
 
   return (
-    <div className="bg-gray-800 rounded-lg p-6">
+    <div className="bg-slate-800 rounded-lg p-6">
       <div className="flex">
         <div className="flex-none w-3/5"> Total No. of Cases</div>
 

@@ -18,7 +18,7 @@ function CountryInfo(props) {
   return (
     <>
       <Modal size="md" show={props.handleShow} onHide={props.handleClose}>
-        <Modal.Body className="bg-gray-800">
+        <Modal.Body className="bg-slate-800">
           <div onClick={props.handleClose} className="float-right">
             <VscChromeClose color="white" />
           </div>
