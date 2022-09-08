@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import { VscChromeClose } from "react-icons/vsc";
 import { GoPrimitiveDot } from "react-icons/go";
 import getAllData from "./../../Assets/JSON/Death and Recovered.json";
