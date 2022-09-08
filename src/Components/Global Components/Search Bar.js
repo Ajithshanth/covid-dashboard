@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
+import getAllData from "./../../Assets/JSON/Death and Recovered.json"; 
 
 function SearchBar() {
+  
+  useEffect(() => {
+    console.log(getAllData)
+  }, []);
+
   return (
     <div className="flex">
       <div className="relative w-full ">

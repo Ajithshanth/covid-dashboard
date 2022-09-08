@@ -23,6 +23,13 @@ code {
   border-color: #41cbe2 !important;
   
 }
+.page-item.active .visually-hidden {
+  display: none;
+  
+}
+
+
+
 
 .page-item .page-link {
   z-index: 3;
