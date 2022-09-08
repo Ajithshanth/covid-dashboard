@@ -1,32 +1,67 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import getAllData from "./../../Assets/JSON/Death and Recovered.json"; 
+import { VscChromeClose } from "react-icons/vsc";
+import Select, { StylesConfig } from "react-select";
+import getAllData from "./../../Assets/JSON/GETAll Countries.json";
 
-function SearchBar() {
-  
+function SearchBar(props) {
+  const [countries, setCountries] = useState([]);
+  const [searchClearIcon, setSearchClearIcon] = useState(false);
   useEffect(() => {
-    console.log(getAllData)
+    var countries = [];
+    for (var i = 0; i < getAllData.length; i++) {
+      var obj = {};
+      obj.value = getAllData[i].country;
+      obj.label = getAllData[i].country;
+      countries.push(obj);
+    }
+    setCountries(countries);
   }, []);
+
+  const colourStyles: StylesConfig<ColourOption> = {
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: "gray",
+      borderRadius: "50px",
+    }),
+    option: (styles) => ({ ...styles, backgroundColor: "#1d222c" }),
+  };
+
+  const searchActive = (e) => {
+    props.handleChange(e);
+    setSearchClearIcon(true);
+  };
+
+  const searchInActive = () => {
+    setSearchClearIcon(false);
+    props.handleClear();
+  };
 
   return (
     <div className="flex">
       <div className="relative w-full ">
-        <input
-          type="search"
-          id="default-search"
-          className=" block p-1 pl-5  w-full  text-sm text-white bg-gray-900 rounded-2xl border border-gray-300   "
-          placeholder="Search by Country"
-          required
+        <Select
+          onChange={(e) => searchActive(e)}
+          options={countries}
+          styles={colourStyles}
         />
-        <div className="flex absolute inset-y-0 right-0 items-center cursor-pointer mr-2 bg-royalblue rounded-3xl m-1 mr-1">
-          <FiSearch color="white" className="w-6 h-6 p-1 " />
-        </div>
-      </div>
+        {searchClearIcon ? (
+          <div className="flex absolute inset-y-0 right-0 items-center cursor-pointer mr-2 bg-royalblue rounded-3xl pl-1 pr-1 m-1 mr-1">
+            <VscChromeClose
+              onClick={searchInActive}
+              color="white"
+              className="w-6 h-6 p-1 "
+            />
+          </div>
+        ) : (
+          <div className="flex absolute inset-y-0 right-0 items-center cursor-pointer mr-2 bg-royalblue rounded-3xl pl-1 pr-1 m-1 mr-1">
+            <FiSearch color="white" className="w-6 h-6 p-1 " />
+          </div>
+        )}
 
-      {/* <input />
-      <span className="mt-1 ml-2">
-        <FiSearch color="mediumturquoise" />
-      </span> */}
+        
+      </div>
+ 
     </div>
   );
 }
